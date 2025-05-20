@@ -6,7 +6,7 @@ A modern web application that transforms AI-generated text into natural, human-l
 
 ## Live Demo
 
-Visit the live application: [AI Humanizer]([https://classy-buttercream-de19d5.netlify.app]
+Visit the live application: [AI Humanizer](https://classy-buttercream-de19d5.netlify.app)
 
 ## Features
 
