@@ -4,6 +4,10 @@ A modern web application that transforms AI-generated text into natural, human-l
 
 ![AI Humanizer Screenshot](https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
 
+## Live Demo
+
+Visit the live application: [AI Humanizer](https://ai-humanizer.netlify.app)
+
 ## Features
 
 - **Text Humanization**
@@ -107,6 +111,8 @@ The application integrates with Undetectable AI's humanizer API for text process
 5. Open a Pull Request
 
 ## License
+
+Copyright © 2025 Manideep Reddy. All rights reserved.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
