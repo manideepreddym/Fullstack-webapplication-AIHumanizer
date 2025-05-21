@@ -60,15 +60,15 @@ const Pricing: React.FC = () => {
 
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch"> {/* Added items-stretch */}
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`rounded-lg p-8 ${
+                className={`rounded-lg p-8 flex flex-col ${ /* Added flex flex-col */
                   index === 1
-                    ? 'bg-gradient-to-b from-purple-600 to-indigo-600 text-white shadow-xl transform scale-105'
+                    ? 'bg-gradient-to-b from-purple-600 to-indigo-600 text-white shadow-xl transform md:scale-105' // md:scale-105 for responsiveness
                     : 'bg-white shadow-md'
-                }`}
+                } mb-8 md:mb-0`} // Added mb-8 md:mb-0 for mobile spacing
               >
                 <h3
                   className={`text-2xl font-bold mb-2 ${
@@ -98,7 +98,7 @@ const Pricing: React.FC = () => {
                 >
                   {plan.description}
                 </p>
-                <ul className="space-y-4 mb-8">
+                <ul className="space-y-4 mb-8 flex-grow"> {/* Added flex-grow to push button down */}
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
                       <Check
@@ -116,13 +116,13 @@ const Pricing: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contact">
+                <Link to="/contact" className="mt-auto"> {/* Added mt-auto to button wrapper */}
                   <Button
                     variant={index === 1 ? 'secondary' : 'primary'}
                     className={`w-full ${
                       index === 1
-                        ? 'bg-purple-200 text-purple-800 hover:bg-purple-300 z-10'  // Pro plan with light purple background and dark purple text
-                        : 'bg-purple-600 text-white hover:bg-purple-700 z-10'  // Basic and Enterprise plans with purple background and white text
+                        ? 'bg-purple-200 text-purple-800 hover:bg-purple-100 z-10'  // Pro plan hover changed
+                        : 'bg-purple-600 text-white hover:bg-purple-700 z-10'
                     }`}
                   >
                     Get Started
@@ -137,7 +137,7 @@ const Pricing: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-16 text-center"> {/* Increased mb-12 to mb-16 */}
               Frequently Asked Questions
             </h2>
             <div className="space-y-8">

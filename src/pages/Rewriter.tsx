@@ -85,7 +85,7 @@ const Rewriter: React.FC = () => {
                 </div>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"> {/* Increased mb-6 to mb-8 */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Tone
@@ -169,7 +169,7 @@ const Rewriter: React.FC = () => {
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Humanized Output
                     </label>
-                    <div className="w-full rounded-lg border border-gray-300 bg-white p-4 text-gray-700">
+                    <div className="w-full rounded-lg border border-gray-300 bg-white p-4 text-gray-700 min-h-[120px]"> {/* Added min-h-[120px] */}
                       {outputText}
                     </div>
                   </div>
