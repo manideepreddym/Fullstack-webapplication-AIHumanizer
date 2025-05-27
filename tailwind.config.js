@@ -19,7 +19,10 @@ export default {
         apple: {
           gray: 'rgb(245, 245, 247)',
           black: 'rgb(29, 29, 31)',
-          blue: 'rgb(41, 151, 255)',
+          blue: {
+            DEFAULT: 'rgb(41, 151, 255)',
+            opacity: 'rgba(41, 151, 255, var(--tw-bg-opacity))'
+          },
           navy: 'rgb(0, 102, 204)',
         }
       },
