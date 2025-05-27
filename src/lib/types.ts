@@ -38,3 +38,22 @@ export interface Document {
   status: 'pending' | 'completed' | 'error';
   created_at: string;
 }
+
+export interface DocumentStats {
+  total: number;
+  completed: number;
+  pending: number;
+  error: number;
+  totalWords: number;
+  averageWords: number;
+  successRate: number;
+}
+
+export interface CreditHistory {
+  id: string;
+  user_id: string;
+  amount: number;
+  type: 'debit' | 'credit';
+  description: string;
+  created_at: string;
+}
