@@ -21,7 +21,7 @@ export default {
           black: 'rgb(29, 29, 31)',
           blue: {
             DEFAULT: 'rgb(41, 151, 255)',
-            opacity: 'rgba(41, 151, 255, var(--tw-bg-opacity))'
+            20: 'rgba(41, 151, 255, 0.2)'
           },
           navy: 'rgb(0, 102, 204)',
         }
