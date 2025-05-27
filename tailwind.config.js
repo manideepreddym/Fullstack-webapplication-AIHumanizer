@@ -17,10 +17,10 @@ export default {
           900: '#4c1d95',
         },
         apple: {
-          gray: '#f5f5f7',
-          black: '#1d1d1f',
-          blue: '#2997ff',
-          navy: '#06c',
+          gray: 'rgb(245, 245, 247)',
+          black: 'rgb(29, 29, 31)',
+          blue: 'rgb(41, 151, 255)',
+          navy: 'rgb(0, 102, 204)',
         }
       },
       fontFamily: {
