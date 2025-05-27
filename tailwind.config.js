@@ -19,9 +19,9 @@ export default {
         apple: {
           gray: 'rgb(245, 245, 247)',
           black: 'rgb(29, 29, 31)',
+          'blue-20': 'rgba(41, 151, 255, 0.2)',
           blue: {
-            DEFAULT: 'rgb(41, 151, 255)',
-            20: 'rgba(41, 151, 255, 0.2)'
+            DEFAULT: 'rgb(41, 151, 255)'
           },
           navy: 'rgb(0, 102, 204)',
         }
