@@ -38,13 +38,13 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-sm bg-white/80 border-b border-gray-100">
+    <header className="sticky top-0 z-50 backdrop-blur-xl bg-white/80 border-b border-gray-100">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <NavLink to="/" className="flex items-center space-x-2">
-              <Brain className="h-6 w-6 text-primary-600" />
-              <span className="text-lg font-medium text-gray-900">AI Humanizer</span>
+              <Brain className="h-6 w-6 text-apple-blue" />
+              <span className="text-lg font-medium text-apple-black">AI Humanizer</span>
             </NavLink>
           </div>
 
@@ -56,8 +56,8 @@ const Navbar: React.FC = () => {
                 className={({ isActive }) =>
                   `text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? 'text-primary-600'
-                      : 'text-gray-600 hover:text-gray-900'
+                      ? 'text-apple-blue'
+                      : 'text-gray-600 hover:text-apple-black'
                   }`
                 }
               >
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
 
           <button
             type="button"
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-full text-gray-600 hover:text-apple-black hover:bg-gray-100"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <span className="sr-only">Toggle menu</span>
@@ -107,10 +107,10 @@ const Navbar: React.FC = () => {
                 key={item.name}
                 to={item.path}
                 className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
+                  `block px-3 py-2 rounded-full text-base font-medium ${
                     isActive
-                      ? 'text-primary-600 bg-primary-50'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                      ? 'text-apple-blue bg-apple-blue/5'
+                      : 'text-gray-600 hover:text-apple-black hover:bg-gray-50'
                   }`
                 }
                 onClick={() => setIsMenuOpen(false)}
@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
                   handleLogout();
                   setIsMenuOpen(false);
                 }}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md"
+                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-600 hover:text-apple-black hover:bg-gray-50 rounded-full"
               >
                 Logout
               </button>
