@@ -2,33 +2,28 @@
 
 A modern web application that transforms AI-generated text into natural, human-like writing using advanced AI technology.
 
-![AI Humanizer Screenshot](https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-
-## Live Demo
-
-Visit the live application: [AI Humanizer](https://classy-buttercream-de19d5.netlify.app)
-
 ## Features
 
-- **Text Humanization**
+### Core Features
+- Text Humanization
   - Transform AI-generated text into natural writing
   - Multiple tone options (casual, professional, friendly)
   - Adjustable output length
   - Real-time word count
 
-- **User Management**
+- User Management
   - Secure email/password authentication
   - Personal dashboard
   - Document history
   - Credit system tracking
 
-- **Credit System**
+- Credit System
   - Free credits for new users
   - Multiple subscription tiers
   - Usage tracking
   - Credit balance management
 
-- **Document Management**
+- Document Management
   - Save and organize documents
   - View processing history
   - Track document status
@@ -36,30 +31,135 @@ Visit the live application: [AI Humanizer](https://classy-buttercream-de19d5.net
 
 ## Tech Stack
 
-- **Frontend**
-  - React 18
-  - TypeScript
-  - Tailwind CSS
-  - Lucide Icons
+### Frontend
+- React 18
+- TypeScript
+- Tailwind CSS
+- Lucide Icons
+- Framer Motion
+- Radix UI Components
 
-- **Backend**
-  - Supabase
-  - PostgreSQL
-  - Row Level Security
+### Backend
+- Supabase
+  - Authentication
+  - Database
   - Edge Functions
+  - Row Level Security
 
-- **Authentication**
-  - Supabase Auth
-  - Protected Routes
-  - Session Management
+## Database Schema
 
-## Getting Started
+### Tables
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/ai-humanizer.git
-   ```
+#### subscription_tiers
+- `id` (uuid, primary key)
+- `name` (text)
+- `description` (text)
+- `credits_per_month` (integer)
+- `price` (numeric)
+- `features` (jsonb)
+- `created_at` (timestamp)
 
+#### user_subscriptions
+- `id` (uuid, primary key)
+- `user_id` (uuid, foreign key)
+- `tier_id` (uuid, foreign key)
+- `status` (text)
+- `current_period_start` (timestamp)
+- `current_period_end` (timestamp)
+- `created_at` (timestamp)
+
+#### user_credits
+- `id` (uuid, primary key)
+- `user_id` (uuid, foreign key)
+- `credits_remaining` (integer)
+- `credits_used` (integer)
+- `last_reset_at` (timestamp)
+- `created_at` (timestamp)
+
+#### documents
+- `id` (uuid, primary key)
+- `user_id` (uuid, foreign key)
+- `title` (text)
+- `original_text` (text)
+- `humanized_text` (text)
+- `words_count` (integer)
+- `credits_used` (integer)
+- `status` (text)
+- `created_at` (timestamp)
+
+## Security
+
+### Row Level Security (RLS)
+- Enabled on all tables
+- User-specific data protection
+- Secure credit management
+- Authentication-based policies
+
+### Authentication
+- Email/password signup and login
+- Protected routes
+- Session management
+- Automatic token refresh
+
+## API Integration
+
+### Humanizer API
+- Endpoint: `https://humanize.undetectable.ai`
+- Methods:
+  - `POST /submit`: Submit text for humanization
+  - `POST /document`: Retrieve humanized text
+- Error handling and retry logic
+- Rate limiting support
+
+### Edge Functions
+- Location: `/supabase/functions/humanize`
+- Purpose: Text processing and API integration
+- CORS handling
+- Error management
+
+## Project Structure
+
+```
+/
+├── src/
+│   ├── components/
+│   │   ├── ui/
+│   │   │   └── link-preview.tsx
+│   │   ├── Button.tsx
+│   │   ├── Footer.tsx
+│   │   ├── Layout.tsx
+│   │   ├── Navbar.tsx
+│   │   └── ProtectedRoute.tsx
+│   ├── lib/
+│   │   ├── api.ts
+│   │   ├── supabaseClient.ts
+│   │   └── types.ts
+│   ├── pages/
+│   │   ├── About.tsx
+│   │   ├── Contact.tsx
+│   │   ├── Dashboard.tsx
+│   │   ├── Home.tsx
+│   │   ├── Login.tsx
+│   │   ├── NotFound.tsx
+│   │   ├── Payment.tsx
+│   │   ├── Pricing.tsx
+│   │   ├── Rewriter.tsx
+│   │   ├── Services.tsx
+│   │   └── SignUp.tsx
+│   ├── App.tsx
+│   └── main.tsx
+├── supabase/
+│   └── functions/
+│       └── humanize/
+│           └── index.ts
+├── public/
+├── package.json
+└── README.md
+```
+
+## Setup Instructions
+
+1. Clone the repository
 2. Install dependencies:
    ```bash
    npm install
@@ -78,29 +178,16 @@ Visit the live application: [AI Humanizer](https://classy-buttercream-de19d5.net
    npm run dev
    ```
 
-## Database Schema
+## Deployment
 
-### Tables
+The application can be deployed to Netlify:
 
-- `subscription_tiers`: Subscription plans and features
-- `user_subscriptions`: User subscription management
-- `user_credits`: Credit tracking system
-- `documents`: Document storage and processing
+1. Build the application:
+   ```bash
+   npm run build
+   ```
 
-### Security
-
-- Row Level Security (RLS) enabled on all tables
-- User-specific data protection
-- Secure credit management
-
-## API Integration
-
-The application integrates with Undetectable AI's humanizer API for text processing:
-
-- Secure API communication
-- Rate limiting
-- Asynchronous processing
-- Error handling
+2. Deploy the `dist` folder
 
 ## Contributing
 
@@ -114,8 +201,4 @@ The application integrates with Undetectable AI's humanizer API for text process
 
 Copyright © 2025 Manideep Reddy. All rights reserved.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-For questions or support, please open an issue or contact the maintainers.
+This project is licensed under the MIT License.
