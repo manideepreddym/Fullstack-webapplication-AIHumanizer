@@ -19,6 +19,8 @@ const SignUp: React.FC = () => {
       ...prev,
       [e.target.name]: e.target.value,
     }));
+    // Clear error when user starts typing
+    setError('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -32,7 +34,26 @@ const SignUp: React.FC = () => {
       return;
     }
 
+    if (formData.password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      setIsLoading(false);
+      return;
+    }
+
     try {
+      // Check if user exists first
+      const { data: existingUser } = await supabase
+        .from('users')
+        .select('id')
+        .eq('email', formData.email)
+        .single();
+
+      if (existingUser) {
+        setError('An account with this email already exists. Please sign in instead.');
+        setIsLoading(false);
+        return;
+      }
+
       // Sign up the user
       const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
         email: formData.email,
@@ -42,7 +63,12 @@ const SignUp: React.FC = () => {
         }
       });
 
-      if (signUpError) throw signUpError;
+      if (signUpError) {
+        if (signUpError.message === 'User already registered') {
+          throw new Error('An account with this email already exists. Please sign in instead.');
+        }
+        throw signUpError;
+      }
 
       // Sign in the user immediately after signup
       const { error: signInError } = await supabase.auth.signInWithPassword({
@@ -123,6 +149,7 @@ const SignUp: React.FC = () => {
                   className="appearance-none block w-full pl-10 px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-purple-500 focus:border-purple-500 sm:text-sm"
                 />
               </div>
+              <p className="mt-1 text-xs text-gray-500">Must be at least 6 characters long</p>
             </div>
 
             <div>
