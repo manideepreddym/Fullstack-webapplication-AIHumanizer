@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Wand2 } from 'lucide-react';
 import Button from '../components/Button';
+import { LinkPreview } from '../components/ui/link-preview';
 
 const Home: React.FC = () => {
   const [inputText, setInputText] = useState('');
@@ -14,7 +15,6 @@ const Home: React.FC = () => {
       .map(sentence => sentence.trim())
       .filter(sentence => sentence.length > 0)
       .map(sentence => {
-        // Add some variety to make it seem more "human"
         const transitions = ['Moreover', 'Additionally', 'Furthermore', 'In fact'];
         return Math.random() > 0.8 
           ? `${transitions[Math.floor(Math.random() * transitions.length)]}, ${sentence.toLowerCase()}`
@@ -39,26 +39,37 @@ const Home: React.FC = () => {
                 Transform AI-generated text into natural, human-like writing that connects with your audience.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-  <Link to="/pricing">
-    <Button 
-      variant="secondary" 
-      size="lg"
-      className="bg-transparent border-none text-white hover:bg-transparent"
-    >
-      Get Started
-    </Button>
-  </Link>
-  <Link to="/rewriter">
-    <Button 
-      variant="outline" 
-      size="lg" 
-      className="bg-transparent border-white text-white hover:bg-white/10"
-    >
-      Try Demo
-    </Button>
-  </Link>
-</div>
-
+                <Link to="/pricing">
+                  <Button 
+                    variant="secondary" 
+                    size="lg"
+                    className="bg-transparent border-none text-white hover:bg-transparent"
+                  >
+                    Get Started
+                  </Button>
+                </Link>
+                <Link to="/rewriter">
+                  <Button 
+                    variant="outline" 
+                    size="lg" 
+                    className="bg-transparent border-white text-white hover:bg-white/10"
+                  >
+                    Try Demo
+                  </Button>
+                </Link>
+              </div>
+              <div className="mt-8">
+                <p className="text-purple-100 mb-2">Check out our featured partners:</p>
+                <div className="space-y-2">
+                  <LinkPreview href="https://openai.com">
+                    OpenAI - Leading AI Research
+                  </LinkPreview>
+                  <br />
+                  <LinkPreview href="https://anthropic.com">
+                    Anthropic - Advanced Language Models
+                  </LinkPreview>
+                </div>
+              </div>
             </div>
             <div className="hidden md:block">
               <div className="relative bg-white/10 backdrop-blur-sm rounded-lg p-8 border border-white/20 shadow-xl">
