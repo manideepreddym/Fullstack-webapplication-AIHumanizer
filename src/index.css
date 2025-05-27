@@ -9,7 +9,7 @@
   }
   
   body {
-    @apply text-apple-black font-sans bg-white;
+    @apply text-[#1d1d1f] font-sans bg-white;
   }
 
   ::selection {
