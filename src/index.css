@@ -13,7 +13,7 @@
   }
 
   ::selection {
-    @apply bg-apple-blue bg-opacity-20;
+    @apply bg-apple-blue/20;
   }
 }
 
